@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1585000748 source:c:\users\rima\desktop\raytracing1\src\vector.cpp
+	"Vector.h"
+	<vector>
+
+1585066508 c:\users\rima\desktop\raytracing1\include\vector.h
+	<math.h>
+	<vector>
+
