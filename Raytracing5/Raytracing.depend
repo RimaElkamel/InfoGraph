@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1582621057 source:c:\users\rima\desktop\raytracing5\src\geometry.cpp
+	"Geometry.h"
+
+1582618208 c:\users\rima\desktop\raytracing5\include\geometry.h
+	<iostream>
+	<vector>
+	"Vector.h"
+	<algorithm>
+
+1582579858 c:\users\rima\desktop\raytracing5\include\vector.h
+	<math.h>
+	<vector>
+
+1581844669 source:c:\users\rima\desktop\raytracing5\src\vector.cpp
+	"Vector.h"
+	<random>
+
