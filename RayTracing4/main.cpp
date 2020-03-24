@@ -338,38 +338,38 @@ public :
 
 int main()
 {
-    int W = 1024;
-    int H = 1024;
+    int W = 512;
+    int H = 512;
 
     Scene s;
     Sphere s_lumiere(Vector(15, 70, -30),15,Vector(1.,1.,1.));
     Sphere s1(Vector(0., 0., -55.), 10, Vector(1.,1.,1.));
-    Sphere s2(Vector(-15., 0., -35.), 10, Vector(1.,1.,1.),false,true);
-    Sphere s3(Vector(15., 0., -75.), 10, Vector(1.,1.,1.),true);
+    //Sphere s2(Vector(-15., 0., -35.), 10, Vector(1.,1.,1.),false,true);
+    //Sphere s3(Vector(15., 0., -75.), 10, Vector(1.,1.,1.),true);
     Sphere ssol(Vector(0., -2000-20, 0.), 2000, Vector(1.,1.,1.));
     Sphere splafond(Vector(0., 2000+100, 0.), 2000, Vector(1.,1.,1.));
     Sphere smurgauche(Vector(-2000-50, 0., 0.), 2000, Vector(0.,1.,0.));
     Sphere smurdroit(Vector(2000+50, 0., 0.), 2000, Vector(0.,0.,1.));
     Sphere smurfond(Vector(0., 0., -2000-100), 2000, Vector(0.,1.,1.));
 
-    //Triangle tri(Vector(-10,-10,-20),Vector(10,-10,-20),Vector(1,0,0));
+    Triangle tri(Vector(-10,-10,-20),Vector(10,-10,-20),Vector(10,10,-20),Vector(1,0,1));
     s.ajouterSphere(s_lumiere);
     s.ajouterSphere(s1);
-    s.ajouterSphere(s2);
-    s.ajouterSphere(s3);
+    //s.ajouterSphere(s2);
+    //s.ajouterSphere(s3);
     s.ajouterSphere(ssol);
     s.ajouterSphere(splafond);
     s.ajouterSphere(smurgauche);
     s.ajouterSphere(smurdroit);
     s.ajouterSphere(smurfond);
-    //s.ajouterTriangle(tri);
+    s.ajouterTriangle(tri);
 
     s.L = &s_lumiere;
     s.intensiteL = 10000000000;
 
     double alpha = 60 * MATH_PI /180;
     double d = W / (2 * tan(alpha/2.));
-    const int nbr_ray = 80;
+    const int nbr_ray = 50;
     Vector pos_lum(0.,0.,0.);
     double focus_distance = 55;
     double aperture=5.;
@@ -392,7 +392,7 @@ int main()
                         Vector new_direction = (destination - new_origin);
                         new_direction.normalize();
                         Ray r(new_origin, new_direction);
-                 	I += s.renduCouleur(r, 5)/nbr_ray;
+                 	I += s.renduCouleur(r, 2)/nbr_ray;
                 }
 
                 img[(i*W + j)*3 + 0] = std::min(255., pow(I[0], 0.45));
@@ -400,7 +400,7 @@ int main()
                 img[(i*W + j)*3 + 2] = std::min(255., pow(I[2], 0.45));
            }
         }
-    save_image("image1.png", &img[0], W, H);
+    save_image("imagetr.png", &img[0], W, H);
 
     return 0;
 }
